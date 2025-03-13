@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ConfirmationActivity">
+
+    <!-- Titre -->
+    <TextView
+        android:id="@+id/confirmationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirmation de commande"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
+
+    <!-- Récapitulatif des produits -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewOrderDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/confirmationTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Total de la commande -->
+    <TextView
+        android:id="@+id/totalAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Montant total : 0 €"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewOrderDetails"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
+
+    <!-- Mode de paiement -->
+    <TextView
+        android:id="@+id/paymentMethod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mode de paiement : Carte bancaire"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/totalAmount"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp" />
+
+    <!-- Adresse de livraison -->
+    <TextView
+        android:id="@+id/deliveryAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adresse de livraison : 123 Rue Exemple, Paris"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/paymentMethod"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp" />
+
+    <!-- Numéro de commande -->
+    <TextView
+        android:id="@+id/orderNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Numéro de commande : 123456"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/deliveryAddress"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp" />
+
+    <!-- Bouton pour revenir à l'accueil -->
+    <Button
+        android:id="@+id/buttonReturnHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retour à l'accueil"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/orderNumber"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"/>
+
+    <!-- Bouton pour voir la commande -->
+    <Button
+        android:id="@+id/buttonViewOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Voir ma commande"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonReturnHome"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

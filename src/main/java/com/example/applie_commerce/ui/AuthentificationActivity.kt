@@ -14,8 +14,10 @@ import retrofit2.Response
 class AuthentificationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         val binding = ActivityAuthentificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.button2.setOnClickListener{
             val login = binding.editTextText2.text.toString()
             val pass = binding.editTextTextPassword2.text.toString()

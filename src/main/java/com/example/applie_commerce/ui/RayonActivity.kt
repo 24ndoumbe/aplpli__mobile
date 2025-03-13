@@ -1,63 +1,55 @@
 package com.example.applie_commerce.ui
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import com.example.applie_commerce.R
+import com.example.applie_commerce.api.Rayon
+import com.example.applie_commerce.api.RayonResponse
+import com.example.applie_commerce.api.RetrofitClient
 import com.example.applie_commerce.databinding.ActivityRayonBinding
-import com.example.applie_commerce.databinding.ItemRayonBinding
-
-// Data class pour Rayon
-data class Rayon(val title: String, val imageResId: Int)
+import com.example.applie_commerce.ui.adapter.RayonAdapter
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class RayonActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRayonBinding
+    private lateinit var rayonAdapter: RayonAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Initialisation de ViewBinding
         binding = ActivityRayonBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Configuration du RecyclerView avec GridLayout
         binding.recyclerViewRayon.layoutManager = GridLayoutManager(this, 2)
 
-        // Liste des rayons
-        val rayonList = listOf(
-            Rayon("Électronique", R.drawable.ic_launcher_foreground),
-            Rayon("Vêtements", R.drawable.ic_launcher_foreground),
-            Rayon("Maison", R.drawable.ic_launcher_foreground),
-            Rayon("Sports", R.drawable.ic_launcher_foreground)
-        )
-
-        // Adapter intégré dans le même fichier
-        val adapter = object : RecyclerView.Adapter<RayonViewHolder>() {
-            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RayonViewHolder {
-                val itemBinding = ItemRayonBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                return RayonViewHolder(itemBinding)
-            }
-
-            override fun onBindViewHolder(holder: RayonViewHolder, position: Int) {
-                val rayon = rayonList[position]
-                holder.bind(rayon)
-            }
-
-            override fun getItemCount(): Int = rayonList.size
-        }
-
-        binding.recyclerViewRayon.adapter = adapter
+        // Appeler l'API pour récupérer les rayons
+        fetchRayons()
     }
 
-    // ViewHolder intégré
-    inner class RayonViewHolder(private val itemBinding: ItemRayonBinding) : RecyclerView.ViewHolder(itemBinding.root) {
-        fun bind(rayon: Rayon) {
-            itemBinding.rayonTitle.text = rayon.title
-            itemBinding.rayonImage.setImageResource(rayon.imageResId)
-        }
+    private fun fetchRayons() {
+        val call = RetrofitClient.apiService.getRayons()
+        call.enqueue(object : Callback<RayonResponse> {
+            override fun onResponse(call: Call<RayonResponse>, response: Response<RayonResponse>) {
+                if (response.isSuccessful) {
+                    val rayons = response.body()?.rayons ?: emptyList()
+                    println("Nombre de rayons récupérés : ${rayons.size}") // ✅ Affiche le bon nombre d'éléments
+
+                    rayonAdapter = RayonAdapter(rayons)
+                    binding.recyclerViewRayon.adapter = rayonAdapter
+                } else {
+                    println("Erreur API : ${response.code()}")
+                    Toast.makeText(this@RayonActivity, "Erreur de récupération des rayons", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<RayonResponse>, t: Throwable) {
+                println("Échec de la requête : ${t.message}")
+                Toast.makeText(this@RayonActivity, "Erreur réseau", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }

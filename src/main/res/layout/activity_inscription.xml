@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.InscriptionActivity">
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Mot de passe"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextEmail"
+        android:layout_margin="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextPrenom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Prénom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextPassword"
+        android:layout_margin="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextNom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Nom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextPrenom"
+        android:layout_margin="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextAdresse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Adresse"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextNom"
+        android:layout_margin="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextTelephone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Téléphone"
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextAdresse"
+        android:layout_margin="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextNbEnfants"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Nombre d'enfants"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextTelephone"
+        android:layout_margin="16dp"/>
+
+    <Button
+        android:id="@+id/buttonInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="S'inscrire"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextNbEnfants"
+        android:layout_margin="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

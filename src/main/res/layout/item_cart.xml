@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Nom du produit -->
+    <TextView
+        android:id="@+id/cartProductName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:text="Nom du produit"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Prix -->
+    <TextView
+        android:id="@+id/cartProductPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="8dp"
+        android:text="Prix"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cartProductName" />
+
+    <!-- Quantité -->
+    <TextView
+        android:id="@+id/cartProductQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="8dp"
+        android:text="Quantité"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cartProductPrice" />
+
+    <!-- Boutons +, - et Supprimer -->
+    <Button
+        android:id="@+id/buttonIncrease"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="8dp"
+        android:text="+"
+        app:layout_constraintStart_toEndOf="@id/cartProductQuantity"
+        app:layout_constraintTop_toBottomOf="@id/cartProductPrice" />
+
+    <Button
+        android:id="@+id/buttonDecrease"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        app:layout_constraintStart_toEndOf="@id/buttonIncrease"
+        app:layout_constraintTop_toBottomOf="@id/cartProductPrice"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="❌"
+        app:layout_constraintStart_toEndOf="@id/buttonDecrease"
+        app:layout_constraintTop_toBottomOf="@id/cartProductPrice"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/valider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="150dp"
+        android:text="Valider panier"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
